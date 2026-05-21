@@ -1,0 +1,13 @@
+Analysis failed: 2 validation errors for Agent
+llm.str
+  Input should be a valid string [type=string_type, input_value=OllamaLLM(model='ollama/d...:1.5b', temperature=0.2), input_type=OllamaLLM]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+llm.BaseLLM
+  Input should be a valid dictionary or instance of BaseLLM [type=model_type, input_value=OllamaLLM(model='ollama/d...:1.5b', temperature=0.2), input_type=OllamaLLM]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+
+Troubleshooting tips:
+1. Make sure Ollama is running: 'ollama serve'
+2. Pull a compatible model: 'ollama pull llama3' or 'ollama pull mistral'
+3. Check Ollama logs for errors
+4. Try a simpler model or reduce task complexity
