@@ -1,6 +1,8 @@
-opensearchpy==2.8.0
-dotenv
-requests
+opensearch-py==2.8.0
+python-dotenv==1.2.2
+requests==2.33.1
 crewai==0.126.0
+langchain==0.3.25
 langchain-core==0.3.63
+langchain-community==0.3.24
 langchain-ollama==0.3.3
