@@ -4,13 +4,16 @@
 ![CrewAI](https://img.shields.io/badge/CrewAI-Multi--Agent-green)
 ![Ollama](https://img.shields.io/badge/Ollama-Local%20LLM-orange)
 ![OpenSearch](https://img.shields.io/badge/OpenSearch-Vector%20Search-red)
-![RAG](https://img.shields.io/badge/RAG-Patent%20Retrieval-purple)
+![SerpAPI](https://img.shields.io/badge/SerpAPI-Google%20Patents-yellow)
+![Agentic AI](https://img.shields.io/badge/Agentic-AI-purple)
 
-## Overview
+---
+
+# Overview
 
 Patent Innovation Predictor is an Agentic AI system that automates patent research, technology trend analysis, and innovation forecasting using a collaborative multi-agent architecture.
 
-The platform leverages CrewAI agents, Retrieval-Augmented Generation (RAG), OpenSearch retrieval, and locally hosted Large Language Models through Ollama to analyze patent ecosystems and predict future technology directions.
+The platform combines SerpAPI, OpenSearch, CrewAI, Ollama, and semantic retrieval to analyze patent ecosystems and predict future technology directions.
 
 Unlike traditional patent search systems, the platform performs end-to-end patent intelligence by coordinating specialized AI agents that retrieve patents, analyze technological patterns, identify innovation gaps, and generate future innovation forecasts.
 
@@ -74,7 +77,7 @@ The final report summarizes technology trends, patent activity, and future innov
 
 ---
 
-## Business Problem
+# Business Problem
 
 Patent analysts, R&D teams, and innovation managers spend significant time reviewing large volumes of patent documents to:
 
@@ -90,56 +93,15 @@ This project automates the complete patent intelligence workflow using Agentic A
 
 ---
 
-## Key Features
+# System Architecture Diagram
 
-### Multi-Agent Patent Research
+![Architecture](assets/architecture.png)
 
-Four specialized AI agents collaborate to perform patent intelligence tasks:
-
-* Research Director Agent
-* Patent Retriever Agent
-* Patent Data Analyst Agent
-* Innovation Forecaster Agent
-
-### Patent Retrieval
-
-* Semantic patent search
-* Hybrid retrieval
-* Prior-art style exploration
-* Technology-specific patent discovery
-
-### Patent Trend Analysis
-
-* Technology evolution tracking
-* Innovation growth analysis
-* Company focus analysis
-* Emerging technology identification
-
-### Innovation Forecasting
-
-* Future technology prediction
-* Breakthrough opportunity detection
-* R&D investment recommendations
-* Disruptive technology identification
-
-### Local LLM Inference
-
-* Runs entirely on Ollama
-* Supports DeepSeek-R1, Llama, Mistral and other local models
-* No dependency on external LLM APIs
-
-### Automated Report Generation
-
-Generates structured reports containing:
-
-* Patent summaries
-* Technology trends
-* Innovation forecasts
-* Strategic recommendations
+The Patent Innovation Predictor follows an Agentic AI architecture that combines patent retrieval, vector search, multi-agent orchestration, and local LLM inference to automate patent intelligence and innovation forecasting.
 
 ---
 
-## System Architecture
+# System Architecture Flow
 
 ```text
 User Research Topic
@@ -186,10 +148,76 @@ Research Director Agent      Patent Retriever Agent
                       Final Patent Intelligence Report
 ```
 
+---
 
-## Agent Responsibilities
+# Workflow Explanation
 
-### Research Director
+1. SerpAPI collects patent information from Google Patents.
+2. information_collector.py stores patent metadata as JSON files.
+3. ingestion.py processes patent data and generates embeddings.
+4. nomic-embed-text converts patent abstracts into vector embeddings.
+5. OpenSearch stores patent metadata and vector embeddings.
+6. CrewAI orchestrates the multi-agent workflow.
+7. Research Director defines the research strategy.
+8. Patent Retriever performs semantic and hybrid retrieval.
+9. Patent Data Analyst identifies trends and innovation patterns.
+10. Innovation Forecaster predicts future technology opportunities.
+11. The system generates a Patent Intelligence Report containing trends, forecasts, and strategic insights.
+
+---
+
+# Key Features
+
+## Multi-Agent Patent Research
+
+Four specialized AI agents collaborate to perform patent intelligence tasks:
+
+* Research Director Agent
+* Patent Retriever Agent
+* Patent Data Analyst Agent
+* Innovation Forecaster Agent
+
+## Patent Retrieval
+
+* Semantic patent search
+* Hybrid retrieval
+* Technology-specific patent discovery
+* Similar patent exploration
+
+## Patent Trend Analysis
+
+* Technology evolution tracking
+* Innovation growth analysis
+* Company focus analysis
+* Emerging technology identification
+
+## Innovation Forecasting
+
+* Future technology prediction
+* Breakthrough opportunity detection
+* R&D investment recommendations
+* Disruptive technology identification
+
+## Local LLM Inference
+
+* Runs entirely on Ollama
+* Supports DeepSeek-R1, Llama, and Mistral
+* No dependency on external LLM APIs
+
+## Automated Report Generation
+
+Generates structured reports containing:
+
+* Patent summaries
+* Technology trends
+* Innovation forecasts
+* Strategic recommendations
+
+---
+
+# Agent Responsibilities
+
+## Research Director
 
 Creates the research strategy by:
 
@@ -197,13 +225,13 @@ Creates the research strategy by:
 * Selecting analysis scope
 * Identifying key innovation categories
 
-### Patent Retriever
+## Patent Retriever
 
 Retrieves relevant patents using:
 
 * Semantic Search
 * Hybrid Search
-* Iterative Retrieval
+* OpenSearch Retrieval
 
 Outputs:
 
@@ -211,7 +239,7 @@ Outputs:
 * Assignee information
 * Technology categories
 
-### Patent Data Analyst
+## Patent Data Analyst
 
 Analyzes patent collections to identify:
 
@@ -220,7 +248,7 @@ Analyzes patent collections to identify:
 * Emerging sub-technologies
 * Company innovation focus
 
-### Innovation Forecaster
+## Innovation Forecaster
 
 Predicts future developments by:
 
@@ -231,43 +259,91 @@ Predicts future developments by:
 
 ---
 
-## Technology Stack
+# Technology Stack
 
-### Backend
+## Backend
 
 * Python
 
-### Agent Framework
+## Data Collection
+
+* SerpAPI
+* Google Patents
+
+## Agent Framework
 
 * CrewAI
 
-### LLM Layer
+## Embedding Layer
 
 * Ollama
-* DeepSeek-R1
-* Llama Models
+* nomic-embed-text
 
-### Retrieval Layer
+## LLM Layer
+
+* DeepSeek-R1
+* Llama
+* Mistral
+
+## Retrieval Layer
 
 * OpenSearch
-
-### RAG Components
-
-* Embeddings
 * Vector Search
-* Semantic Retrieval
+* Semantic Search
+* Hybrid Search
 
-### Application Layer
-
-* Streamlit
-
-### Deployment
+## Deployment
 
 * Docker
 
 ---
 
-## Example Workflow
+# Project Metrics
+
+* Patent Collection Source: SerpAPI
+* Embedding Model: nomic-embed-text
+* Embedding Dimension: 768
+* Vector Database: OpenSearch 2.11
+* Retrieval Method: Semantic Search + Hybrid Search
+* Agent Framework: CrewAI
+* Local LLM: Ollama
+* Deployment Environment: Docker
+
+---
+
+# Challenges Faced
+
+## Docker & OpenSearch Setup
+
+* Docker engine connection issues prevented OpenSearch startup.
+* Resolved container networking and environment configuration.
+
+## Ollama Configuration
+
+* Installed and configured Ollama for local model inference.
+* Integrated embedding and LLM models successfully.
+
+## Embedding Indexing Error
+
+* OpenSearch rejected documents due to null embeddings.
+* Added validation before indexing patent records.
+
+## CrewAI Compatibility Issues
+
+* Resolved version compatibility issues between CrewAI and LLM integrations.
+
+## Dependency Management
+
+Resolved installation issues related to:
+
+* tiktoken
+* crewai
+* langchain-ollama
+* opensearch-py
+
+---
+
+# Example Workflow
 
 1. User selects a technology domain (Lithium Battery).
 2. Research Director creates a research strategy.
@@ -278,58 +354,7 @@ Predicts future developments by:
 
 ---
 
-## Sample Output
-
-### Technology Domain
-
-Lithium Battery
-
-### Key Findings
-
-* Growth in energy density optimization
-* Increased patent activity in battery management systems
-* Emerging innovations in advanced cathode materials
-* Strong innovation contributions from Samsung, Tesla, and Panasonic
-
-### Forecast
-
-* AI-driven battery management systems
-* Advanced energy storage architectures
-* Next-generation battery materials
-* Smart battery monitoring technologies
-
----
-
-## Project Structure
-
-```text
-research_agent/
-│
-├── assets/
-│   ├── 01_home_screen.png
-│   ├── 02_research_director.png
-│   ├── 03_patent_retriever.png
-│   ├── 04_patent_analyst.png
-│   ├── 05_innovation_forecaster.png
-│   ├── 06_crew_completion.png
-│   └── 07_final_report.png
-│
-├── agentic_rag.py
-├── patent_crew.py
-├── patent_search_tools.py
-├── patent_analyzer_app.py
-├── ingestion.py
-├── embedding.py
-├── information_collector.py
-├── helper.py
-├── requirements.txt
-├── docker-compose.yml
-└── README.md
-```
-
----
-
-## Future Enhancements
+# Future Enhancements
 
 * Real-time patent ingestion
 * Patent visualization dashboards
@@ -337,19 +362,22 @@ research_agent/
 * Multi-modal patent analysis
 * Citation network analysis
 * Competitive intelligence dashboards
+* Patent clustering and categorization
+* Trend forecasting visualizations
 
 ---
 
-## Skills Demonstrated
+# Skills Demonstrated
 
 * Agentic AI
 * CrewAI
 * Multi-Agent Systems
-* Retrieval-Augmented Generation (RAG)
+* RAG
 * OpenSearch
 * Ollama
 * LLM Integration
 * Semantic Search
+* Hybrid Search
 * Patent Analytics
 * Innovation Forecasting
 * Vector Databases
@@ -360,7 +388,7 @@ research_agent/
 
 ---
 
-## Author
+# Author
 
 **Pranali Dayanand Misal**
 
