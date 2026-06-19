@@ -142,21 +142,39 @@ Generates structured reports containing:
 ## System Architecture
 
 ```text
-User Research Query
+User Research Topic
+        |
+        v
+SerpAPI (Google Patents)
+        |
+        v
+information_collector.py
+        |
+        v
+Patent JSON Files
+        |
+        v
+ingestion.py
+        |
+        v
+nomic-embed-text (Ollama Embeddings)
+        |
+        v
+OpenSearch Vector Database
         |
         v
 CrewAI Orchestrator
         |
-        +---------------------------+
-        |                           |
-        v                           v
+        +-----------------------------+
+        |                             |
+        v                             v
 Research Director Agent      Patent Retriever Agent
                                       |
                                       v
-                             OpenSearch Retrieval
+                             Semantic / Hybrid Search
                                       |
                                       v
-                             Patent Knowledge Base
+                           Patent Knowledge Base
                                       |
                                       v
                            Patent Data Analyst Agent
@@ -165,10 +183,9 @@ Research Director Agent      Patent Retriever Agent
                            Innovation Forecaster Agent
                                       |
                                       v
-                        Innovation Forecast Report
+                      Final Patent Intelligence Report
 ```
 
----
 
 ## Agent Responsibilities
 
